@@ -5,6 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class Utils : MonoBehaviour
 {
+    public static void SaveFruitsCounter(int fruitsCounter)
+    {
+        PlayerPrefs.SetInt(Constants.FRUITS_COLLECTED, fruitsCounter);
+        PlayerPrefs.Save();
+    }
+
+    public static int GetFruitsCounter()
+    {
+        return PlayerPrefs.GetInt(Constants.FRUITS_COLLECTED);
+    }
+
+    public static void SavePlayerLives(int lives)
+    {
+        PlayerPrefs.SetInt(Constants.PLAYER_LIVES, lives);
+        PlayerPrefs.Save();
+    }
+    public static int GetPlayerLives()
+    {
+        return PlayerPrefs.GetInt(Constants.PLAYER_LIVES);
+    }
+
     public static void SaveSettings(bool isMusicOn, bool isSFXOn)
     {
         PlayerPrefs.SetInt(Constants.IS_MUSIC_ON, isMusicOn ? 1 : 0);

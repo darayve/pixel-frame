@@ -152,6 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 15
   moveSpeed: 7
+  bounceBackForce: 10
+  hurtForce: 10
   jumpableGround:
     serializedVersion: 2
     m_Bits: 64
@@ -172,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2331da9c1eb7f26409bcc2cfa0501582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orangesText: {fileID: 0}
+  fruitsText: {fileID: 0}
   collectSFX: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
 --- !u!95 &2035411547441008646
 Animator:
@@ -205,7 +207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25250a8d489f67a42a972deba7cfb6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHitSFX: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   deathSFX: {fileID: 8300000, guid: 4b4dd7245f6104c8c8eb07ccf6b386ed, type: 3}
+  hurtSFX: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
 --- !u!1 &5179845224105197052
 GameObject:
   m_ObjectHideFlags: 0

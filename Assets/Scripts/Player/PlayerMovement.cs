@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     // SerializeFields
     [SerializeField] float jumpForce = 14f;
     [SerializeField] float moveSpeed = 7f;
+    [SerializeField] float bounceBackForce = 10f;
+    [SerializeField] float hurtForce = 10f;
     [SerializeField] LayerMask jumpableGround;
     [SerializeField] AudioClip jumpSFX;
     [SerializeField] ParticleSystem[] psDusts;
@@ -19,10 +21,17 @@ public class PlayerMovement : MonoBehaviour
     private float directionX = 0f;
     private bool doubleJumped;
     private bool wasOnGround;
+    private static bool _isPlayerFalling;
+    private enum MovementState { idle, running, jumping, falling, doubleJumping, hit }
+    private MovementState state = MovementState.idle;
 
+    // Public
+    public static bool IsPlayerFalling
+    {
+        get => _isPlayerFalling;
+        set => _isPlayerFalling = value;
+    }
 
-    private enum MovementState { idle, running, jumping, falling, doubleJumping };
-        
     // Start is called before the first frame update
     private void Start()
     {
@@ -36,7 +45,10 @@ public class PlayerMovement : MonoBehaviour
     {
         directionX = Input.GetAxisRaw("Horizontal");
 
-        rb.velocity = new Vector2(directionX * moveSpeed, rb.velocity.y);
+        if (state != MovementState.hit)
+        {
+            rb.velocity = new Vector2(directionX * moveSpeed, rb.velocity.y);
+        }
     }
 
     // Update is called once per frame
@@ -47,6 +59,55 @@ public class PlayerMovement : MonoBehaviour
             doubleJumped = false;
         }
 
+        if (state != MovementState.hit)
+        {
+            Movement();
+        }
+
+        if (!wasOnGround && IsGrounded())
+        {
+            psDusts[2].gameObject.SetActive(true);
+            psDusts[2].Stop();
+            psDusts[2].Play();
+        }
+
+        wasOnGround = IsGrounded();
+        AnimationState();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag(Constants.ENEMY_TAG))
+        {
+            if (state == MovementState.falling)
+            {
+                _isPlayerFalling = true;
+                collision.gameObject.GetComponent<Animator>().SetTrigger("eliminated");
+                rb.velocity = new Vector2(rb.velocity.x, 14f);
+                Destroy(collision.gameObject, collision.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length - .12f);
+                collision.gameObject.GetComponent<Collider2D>().enabled = false;
+            } else
+            {
+                _isPlayerFalling = false;
+                HandleHit(collision);
+            }
+        }
+    }
+
+    private void HandleHit(Collision2D collision)
+    {
+        state = MovementState.hit;
+        if (collision.gameObject.transform.position.x > transform.position.x)
+        {
+            rb.velocity = new Vector2(-hurtForce, rb.velocity.y);
+        } else
+        {
+            rb.velocity = new Vector2(hurtForce, rb.velocity.y);
+        }
+    }
+
+    private void Movement()
+    {
         // Single jump
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -71,30 +132,49 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * .5f);
         }
-
-        if (!wasOnGround && IsGrounded())
-        {
-            psDusts[2].gameObject.SetActive(true);
-            psDusts[2].Stop();
-            psDusts[2].Play();
-        }
-
-        wasOnGround = IsGrounded();
-        UpdateAnimationState();
     }
 
-    private void UpdateAnimationState()
+    private void AnimationState()
     {
-        MovementState state;
-        
-        // Running animation
-        if (directionX > 0f)
+        // JUMP
+        if (rb.velocity.y > .01f)
+        {
+            state = MovementState.jumping;
+            if (doubleJumped)
+            {
+                state = MovementState.doubleJumping;
+            }
+        }
+        else if (rb.velocity.y < -.01f) // FALLING
+        {
+            psDusts[0].Stop();
+            psDusts[1].Stop();
+            state = MovementState.falling;
+            if (rb.velocity.y > .01f)
+            {
+                state = MovementState.doubleJumping;
+            }
+            else if (rb.velocity.y < -.01f)
+            {
+                state = MovementState.falling;
+                if (IsGrounded())
+                {
+                    state = MovementState.idle;
+                }
+            }
+        } else if (state == MovementState.hit)
+        {
+            if (Mathf.Abs(rb.velocity.x) < .01f)
+            {
+                state = MovementState.idle;
+            }
+        } else if (directionX > 0f) // RUNNING
         {
             state = MovementState.running;
             sprite.flipX = false;
             psDusts[0].Play();
         }
-        else if (directionX < 0)
+        else if (directionX < 0f)
         {
             state = MovementState.running;
             sprite.flipX = true;
@@ -105,18 +185,7 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.idle;
         }
 
-        if (rb.velocity.y > .01f) // Imprecise value, can be changed to .001f for example
-        {
-            state = MovementState.jumping;
-            if (doubleJumped) state = MovementState.doubleJumping;
-        } else if (rb.velocity.y < -.01f)
-        {
-            psDusts[0].Stop();
-            psDusts[1].Stop();
-            state = MovementState.falling;
-            if (rb.velocity.y > .01f) state = MovementState.doubleJumping;
-            else if (rb.velocity.y < -.01f) state = MovementState.falling;
-        }
+        
         anim.SetInteger("state", (int)state);
     }
 

@@ -27,7 +27,9 @@ public class Finish : MonoBehaviour
 
     private void CompleteLevel()
     {
-        PlayerPrefs.SetInt(Constants.LEVEL, nextLevel);
+        Utils.SaveLevel(nextLevel);
+        Utils.SavePlayerLives(LifeManager.NumberOfLives);
+        Utils.SaveFruitsCounter(FruitsManager.FruitsCollected);
         PlayerPrefs.Save();
         SceneManager.LoadScene(nextLevel);
     }

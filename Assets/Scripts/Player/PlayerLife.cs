@@ -4,7 +4,9 @@ using UnityEngine.SceneManagement;
 public class PlayerLife : MonoBehaviour
 {
     // SerializeFields
+    [SerializeField] private AudioClip enemyHitSFX;
     [SerializeField] private AudioClip deathSFX;
+    [SerializeField] private AudioClip hurtSFX;
 
     // Private
     private Animator anim;
@@ -18,8 +20,19 @@ public class PlayerLife : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag(Constants.ENEMY_TAG))
+        {
+            if (PlayerMovement.IsPlayerFalling)
+            {
+                SoundManager.Instance.PlaySound(enemyHitSFX);
+            } else
+            {
+                SoundManager.Instance.PlaySound(hurtSFX);
+            }
+        }
         if (collision.gameObject.CompareTag(Constants.TRAP_TAG))
         {
+            SoundManager.Instance.PlaySound(hurtSFX);
             Die();
         }
     }
@@ -33,6 +46,8 @@ public class PlayerLife : MonoBehaviour
 
     private void RestartLevel()
     {
+        // reset life and fruit count
+        // save these things
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
