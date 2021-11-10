@@ -5,11 +5,11 @@ using TMPro;
 public class ItemCollector : MonoBehaviour
 {
     // SerializeFields
-    [SerializeField] private TextMeshProUGUI orangesText;
+    [SerializeField] private TextMeshProUGUI fruitsText;
     [SerializeField] private AudioClip collectSFX;
 
     // Private
-    private int oranges = 0;
+    private int fruits = 0;
     private Animator fruitAnim;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,8 +21,8 @@ public class ItemCollector : MonoBehaviour
             fruitAnim.SetTrigger("collected");
             Destroy(collision.gameObject, collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
             collision.enabled = false;
-            oranges++;
-            orangesText.text = "" + oranges;
+            fruits++;
+            fruitsText.text = "" + fruits;
             SoundManager.Instance.PlaySound(collectSFX);
         }
     }
