@@ -9,7 +9,6 @@ public class SoundManager : MonoBehaviour
 
     // Private
     private static float _sliderVolume;
-    //private static bool _isMusicOn = true, _isSFXOn = true;
 
     // Public
     public static SoundManager Instance;
@@ -18,18 +17,6 @@ public class SoundManager : MonoBehaviour
         get => _sliderVolume;
         set => _sliderVolume = value;
     }
-
-    /*public static bool IsMusicOn
-    {
-        get => _isMusicOn;
-        set => _isMusicOn = value;
-    }
-
-    public static bool IsSFXOn
-    {
-        get => _isSFXOn;
-        set => _isSFXOn = value;
-    }*/
 
     private void Awake()
     {
@@ -57,14 +44,12 @@ public class SoundManager : MonoBehaviour
     public void ToggleEffects()
     {
         effectsSource.mute = !effectsSource.mute;
-        //_isSFXOn = effectsSource.mute;
         Utils.SaveSFXToggle(isOn: effectsSource.mute);
     }
 
     public void ToggleMusic()
     {
         musicSource.mute = !musicSource.mute;
-        //_isMusicOn = musicSource.mute;
         Utils.SaveMusicToggle(isOn: musicSource.mute);
     }
 }
