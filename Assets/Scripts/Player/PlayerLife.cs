@@ -25,15 +25,33 @@ public class PlayerLife : MonoBehaviour
             if (PlayerMovement.IsPlayerFalling)
             {
                 SoundManager.Instance.PlaySound(enemyHitSFX);
-            } else
+            } 
+            else
+            {
+                LifeManager.NumberOfLives--;
+                if (LifeManager.NumberOfLives == 0)
+                {
+                    Die();
+                } else
+                {
+                    SoundManager.Instance.PlaySound(hurtSFX);
+                }
+                LifeManager.Instance.SetLivesCounterText();
+            }
+        }
+
+        if (collision.gameObject.CompareTag(Constants.TRAP_TAG))
+        {
+            LifeManager.NumberOfLives--;
+            if (LifeManager.NumberOfLives == 0)
+            {
+                Die();
+            }
+            else
             {
                 SoundManager.Instance.PlaySound(hurtSFX);
             }
-        }
-        if (collision.gameObject.CompareTag(Constants.TRAP_TAG))
-        {
-            SoundManager.Instance.PlaySound(hurtSFX);
-            Die();
+            LifeManager.Instance.SetLivesCounterText();
         }
     }
 
@@ -46,8 +64,10 @@ public class PlayerLife : MonoBehaviour
 
     private void RestartLevel()
     {
-        // reset life and fruit count
-        // save these things
+        LifeManager.NumberOfLives = 3;
+        LifeManager.Instance.SaveLives();
+        FruitsManager.FruitsCollected = 0;
+        FruitsManager.Instance.SaveFruits();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
