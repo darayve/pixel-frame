@@ -14,7 +14,6 @@ public class Constants
     public const string ENEMY_TAG = "Enemy";
     public const string GROUND_TAG = "Ground";
     public const string COLLECTABLE_TAG = "Collectable";
-    public const string ORANGE_TAG = "Orange";
     public const string TRAP_TAG = "Trap";
 
     // Magic numbers
