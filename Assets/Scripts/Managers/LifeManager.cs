@@ -28,23 +28,34 @@ public class LifeManager : MonoBehaviour
         }
         else
         {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
             Destroy(gameObject);
         }
-
+        
         if (MenuSceneManager.IsNewGame)
         {
             _numberOfLives = Constants.NUMBER_OF_LIVES;
-            Utils.SavePlayerLives(_numberOfLives);
-        }
-        else
+        } else
         {
             _numberOfLives = Utils.GetPlayerLives();
         }
+
         SetLivesCounterText();
     }
 
     public void SetLivesCounterText()
     {
-        lifeText.text = _numberOfLives.ToString();
+        lifeText.text = "" + _numberOfLives;
+    }
+
+    public void ResetLives()
+    {
+        _numberOfLives = Constants.NUMBER_OF_LIVES;
+    }
+
+    public void SaveLives()
+    {
+        Utils.SavePlayerLives(_numberOfLives);
     }
 }
