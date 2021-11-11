@@ -43,6 +43,8 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveGame()
     {
+        LifeManager.Instance.SaveLives();
+        FruitsManager.Instance.SaveFruits();
         Utils.SaveCurrentLevel();
     }
 
