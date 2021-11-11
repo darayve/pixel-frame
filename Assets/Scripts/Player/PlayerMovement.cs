@@ -89,20 +89,25 @@ public class PlayerMovement : MonoBehaviour
             } else
             {
                 _isPlayerFalling = false;
-                HandleHit(collision);
+                HandleHit(collision, hurtForce, rb.velocity.y);
             }
+        }
+
+        if (collision.gameObject.CompareTag(Constants.TRAP_TAG))
+        {
+            HandleHit(collision, hurtForce, rb.velocity.y * bounceBackForce);
         }
     }
 
-    private void HandleHit(Collision2D collision)
+    private void HandleHit(Collision2D collision, float xForce, float yForce)
     {
         state = MovementState.hit;
         if (collision.gameObject.transform.position.x > transform.position.x)
         {
-            rb.velocity = new Vector2(-hurtForce, rb.velocity.y);
+            rb.velocity = new Vector2(-xForce, yForce);
         } else
         {
-            rb.velocity = new Vector2(hurtForce, rb.velocity.y);
+            rb.velocity = new Vector2(xForce, yForce);
         }
     }
 
