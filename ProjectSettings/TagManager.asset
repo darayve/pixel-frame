@@ -6,9 +6,7 @@ TagManager:
   tags:
   - Ground
   - Collectable
-  - Orange
   - Trap
-  - BackgroundMusic
   - Enemy
   layers:
   - Default
