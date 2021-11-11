@@ -7,6 +7,7 @@ public class FruitsManager : MonoBehaviour
 {
     // SerializeFields
     [SerializeField] private TextMeshProUGUI fruitsText;
+    [SerializeField] private AudioClip newLifeSFX;
 
     // Private
     private static int _fruitsCollected = 0;
@@ -29,17 +30,12 @@ public class FruitsManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
-        if (MenuSceneManager.IsNewGame)
-        {
-            _fruitsCollected = 0;
-            Utils.SavePlayerLives(_fruitsCollected);
-        }
-        else
-        {
-            _fruitsCollected = Utils.GetFruitsCounter();
-        }
+        _fruitsCollected = 0;
+
         UpdateFruitsCounter();
     }
 
@@ -49,8 +45,20 @@ public class FruitsManager : MonoBehaviour
         {
             LifeManager.NumberOfLives++;
             LifeManager.Instance.SetLivesCounterText();
-            print("Giving one more life!");
+            SoundManager.Instance.PlaySound(newLifeSFX);
+            print("Earned one more life!");
         }
-        fruitsText.text = _fruitsCollected.ToString();
+        
+        fruitsText.text = "" + _fruitsCollected;
+    }
+
+    public void ResetFruitCount()
+    {
+        _fruitsCollected = 0;
+    }
+
+    public void SaveFruits()
+    {
+        Utils.SaveFruitsCounter(_fruitsCollected);
     }
 }
