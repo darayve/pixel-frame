@@ -11,6 +11,7 @@ public class FruitsManager : MonoBehaviour
 
     // Private
     private static int _fruitsCollected = 0;
+    private int fruitsToEarnHeart = _fruitsCollected;
 
     // Public
     public static FruitsManager Instance;
@@ -41,6 +42,10 @@ public class FruitsManager : MonoBehaviour
 
     public void UpdateFruitsCounter()
     {
+        if (fruitsToEarnHeart == _fruitsCollected)
+        {
+            fruitsToEarnHeart = 0;
+        }
         if (_fruitsCollected == Constants.FRUITS_HEALTH)
         {
             LifeManager.NumberOfLives++;

@@ -21,6 +21,8 @@ public class Finish : MonoBehaviour
         {
             SoundManager.Instance.PlaySound(finishSFX);
             levelCompleted = true;
+            LifeManager.Instance.SaveLives();
+            FruitsManager.Instance.SaveFruits();
             Invoke("CompleteLevel", 1.5f);
         }
     }
@@ -28,8 +30,6 @@ public class Finish : MonoBehaviour
     private void CompleteLevel()
     {
         Utils.SaveLevel(nextLevel);
-        LifeManager.Instance.SaveLives();
-        FruitsManager.Instance.SaveFruits();
         SceneManager.LoadScene(nextLevel);
     }
 }

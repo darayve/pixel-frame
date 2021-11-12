@@ -82,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
             if (state == MovementState.falling)
             {
                 _isPlayerFalling = true;
+                ScreenShake.Instance.ShakeCamera(3f, .24f);
                 collision.gameObject.GetComponent<Animator>().SetTrigger("eliminated");
                 rb.velocity = new Vector2(rb.velocity.x, 14f);
                 Destroy(collision.gameObject, collision.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length - .12f);
@@ -102,6 +103,8 @@ public class PlayerMovement : MonoBehaviour
     private void HandleHit(Collision2D collision, float xForce, float yForce)
     {
         state = MovementState.hit;
+        ScreenShake.Instance.ShakeCamera(3f, .24f);
+
         if (collision.gameObject.transform.position.x > transform.position.x)
         {
             rb.velocity = new Vector2(-xForce, yForce);
