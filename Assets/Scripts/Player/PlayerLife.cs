@@ -22,34 +22,42 @@ public class PlayerLife : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(Constants.ENEMY_TAG))
         {
-            if (PlayerMovement.IsPlayerFalling)
+            if (PlayerController.IsPlayerFalling)
             {
                 SoundManager.Instance.PlaySound(enemyHitSFX);
-            } 
+            }
             else
             {
-                LifeManager.NumberOfLives--;
-                if (LifeManager.NumberOfLives == 0)
+                if (LifeManager.NumberOfLives > 0)
                 {
-                    Die();
-                } else
-                {
-                    SoundManager.Instance.PlaySound(hurtSFX);
+                    LifeManager.NumberOfLives--;
+                    if (LifeManager.NumberOfLives == 0)
+                    {
+                        Die();
+                    }
+                    else
+                    {
+                        SoundManager.Instance.PlaySound(hurtSFX);
+                    }
                 }
+                
                 LifeManager.Instance.SetLivesCounterText();
             }
         }
 
         if (collision.gameObject.CompareTag(Constants.TRAP_TAG))
         {
-            LifeManager.NumberOfLives--;
-            if (LifeManager.NumberOfLives == 0)
+            if (LifeManager.NumberOfLives > 0)
             {
-                Die();
-            }
-            else
-            {
-                SoundManager.Instance.PlaySound(hurtSFX);
+                LifeManager.NumberOfLives--;
+                if (LifeManager.NumberOfLives == 0)
+                {
+                    Die();
+                }
+                else
+                {
+                    SoundManager.Instance.PlaySound(hurtSFX);
+                }
             }
             LifeManager.Instance.SetLivesCounterText();
         }

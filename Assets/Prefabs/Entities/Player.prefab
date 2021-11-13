@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2035411547441008647}
   - component: {fileID: 2035411547441008646}
   - component: {fileID: 2035411547441008664}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 7331202201559724946}
   - component: {fileID: 844527744615921108}
   - component: {fileID: 6066944715902348516}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_Jumping
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5024,7 +5024,7 @@ GameObject:
   - component: {fileID: 8915004355051183894}
   - component: {fileID: 2621594438452017252}
   - component: {fileID: 4160161505483861655}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_Running
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9828,7 +9828,7 @@ GameObject:
   - component: {fileID: 5570357956584955159}
   - component: {fileID: 767906835668122199}
   - component: {fileID: 8277746728187486564}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_Falling
   m_TagString: Untagged
   m_Icon: {fileID: 0}

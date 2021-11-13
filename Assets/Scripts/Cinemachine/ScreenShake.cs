@@ -5,13 +5,12 @@ using Cinemachine;
 
 public class ScreenShake : MonoBehaviour
 {
-    public static ScreenShake Instance
-    {
-        get;
-        private set;
-    }
+    public static ScreenShake Instance { get; private set; }
     private CinemachineVirtualCamera cinemachineVC;
     private float shakeTimer;
+    private float shakeTimerTotal;
+    private float initialIntensity;
+
     private void Awake()
     {
         Instance = this;
@@ -24,6 +23,9 @@ public class ScreenShake : MonoBehaviour
             cinemachineVC.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         cinemachineBMCP.m_AmplitudeGain = intensity;
+
+        initialIntensity = intensity;
+        shakeTimerTotal = time;
         shakeTimer = time;
     }
 
@@ -32,12 +34,9 @@ public class ScreenShake : MonoBehaviour
         if (shakeTimer > 0)
         {
             shakeTimer -= Time.deltaTime;
-            if (shakeTimer <= 0f)
-            {
-                CinemachineBasicMultiChannelPerlin cinemachineBMCP =
+            CinemachineBasicMultiChannelPerlin cinemachineBMCP =
                 cinemachineVC.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-                cinemachineBMCP.m_AmplitudeGain = 0f;
-            }
+            cinemachineBMCP.m_AmplitudeGain = Mathf.Lerp(initialIntensity, 0f, 1 - (shakeTimer / shakeTimerTotal));
         }
     }
 }
