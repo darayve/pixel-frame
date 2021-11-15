@@ -73,6 +73,12 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+    public void StopChase()
+    {
+        wasPlayerDetected = false;
+        isSearchingForPlayer = false;
+        rb.velocity = new Vector2(0, 0);
+    }
 
     private IEnumerator Flip(int movementDir, int scaleDir)
     {
