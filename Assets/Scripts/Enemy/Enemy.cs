@@ -31,9 +31,15 @@ public abstract class Enemy : MonoBehaviour
     public bool DetectPlayer(float distance)
     {
         bool val = false;
+        float castDist = distance;
 
-        Vector2 endPosition = castStart.position + Vector3.right * distance;
-        RaycastHit2D hit = Physics2D.Linecast(castStart.position, endPosition, 1 << LayerMask.NameToLayer("Action"));
+        if (isFacingLeft)
+        {
+            castDist = -distance;
+        }
+
+        Vector2 endPosition = castStart.position + Vector3.right * castDist;
+        RaycastHit2D hit = Physics2D.Linecast(castStart.position, endPosition, 1 << LayerMask.NameToLayer(Constants.ACTION_LAYER));
 
         if (hit.collider != null)
         {
@@ -44,6 +50,10 @@ public abstract class Enemy : MonoBehaviour
             {
                 val = false;
             }
+            Debug.DrawLine(castStart.position, endPosition, Color.green);
+        } else
+        {
+            Debug.DrawLine(castStart.position, endPosition, Color.yellow);
         }
 
         return val;
