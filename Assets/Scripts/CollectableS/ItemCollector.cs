@@ -22,6 +22,18 @@ public class ItemCollector : MonoBehaviour
             FruitsManager.FruitCounterToHeart++;
             FruitsManager.Instance.UpdateFruitsCounter();
             SoundManager.Instance.PlaySound(collectSFX);
+            if (collision.gameObject.GetComponent<CollectableScript>().itemType == Constants.ITEM_HEALTH)
+            {
+                CollectFruitHealth();
+            }
         }
+    }
+
+    private void CollectFruitHealth()
+    {
+        LifeManager.NumberOfLives++;
+        LifeManager.Instance.SetLivesCounterText();
+        FruitsManager.Instance.PlayNewLifeSFX();
+        print("Watermelon collected! 1UP!");
     }
 }

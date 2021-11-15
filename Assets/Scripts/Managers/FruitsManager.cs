@@ -53,7 +53,7 @@ public class FruitsManager : MonoBehaviour
         {
             LifeManager.NumberOfLives++;
             LifeManager.Instance.SetLivesCounterText();
-            SoundManager.Instance.PlaySound(newLifeSFX);
+            PlayNewLifeSFX();
             _fruitsToEarnHeart = 0;
             print("Earned one more life!");
         }
@@ -69,5 +69,10 @@ public class FruitsManager : MonoBehaviour
     public void SaveFruits()
     {
         Utils.SaveFruitsCounter(_fruitsCollected);
+    }
+
+    public void PlayNewLifeSFX()
+    {
+        SoundManager.Instance.PlaySound(newLifeSFX);
     }
 }

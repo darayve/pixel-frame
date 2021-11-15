@@ -22,5 +22,10 @@ public class Constants
 
     // Magic numbers
     public const int NUMBER_OF_LIVES = 3;
-    public const int FRUITS_HEALTH = 5; 
+    public const int FRUITS_HEALTH = 5;
+
+    // Item type
+    public const string ITEM_HEALTH = "health";
+    public const string ITEM_FRUIT = "fruit";
+
 }
