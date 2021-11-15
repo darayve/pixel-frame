@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private static bool _isPlayerFalling;
     private enum MovementState { idle, running, jumping, falling, doubleJumping, hit }
     private MovementState state = MovementState.idle;
+    private float gravityScale;
+    private float fallGravityMultiplier = 1.9f;
 
     // Public
     public static bool IsPlayerFalling
@@ -39,11 +41,21 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         coll = GetComponent<BoxCollider2D>();
+        gravityScale = rb.gravityScale;
     }
 
     private void FixedUpdate()
     {
         directionX = Input.GetAxisRaw("Horizontal");
+
+        if (rb.velocity.y < -0.01f)
+        {
+            rb.gravityScale = gravityScale * fallGravityMultiplier;
+        }
+        else
+        {
+            rb.gravityScale = gravityScale;
+        }
 
         if (state != MovementState.hit)
         {
@@ -158,6 +170,7 @@ public class PlayerController : MonoBehaviour
             psDusts[0].Stop();
             psDusts[1].Stop();
             state = MovementState.falling;
+
             if (rb.velocity.y > .01f)
             {
                 state = MovementState.doubleJumping;
@@ -192,7 +205,6 @@ public class PlayerController : MonoBehaviour
         {
             state = MovementState.idle;
         }
-
         
         anim.SetInteger("state", (int)state);
     }
