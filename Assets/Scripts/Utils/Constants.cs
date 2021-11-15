@@ -16,6 +16,10 @@ public class Constants
     public const string COLLECTABLE_TAG = "Collectable";
     public const string TRAP_TAG = "Trap";
 
+    // Layers
+    public const string ACTION_LAYER = "Action";
+    public const string GROUND_LAYER = "Ground";
+
     // Magic numbers
     public const int NUMBER_OF_LIVES = 3;
     public const int FRUITS_HEALTH = 5; 
