@@ -58,4 +58,18 @@ public abstract class Enemy : MonoBehaviour
 
         return val;
     }
+
+    private IEnumerator Flip(int movementDir, int scaleDir)
+    {
+        yield return new WaitForSeconds(.2f);
+        rb.velocity = new Vector2(moveSpeed * movementDir, 0);
+        transform.localScale = new Vector2(1 * scaleDir, 1);
+        if (scaleDir < 0)
+        {
+            isFacingLeft = true;
+        } else
+        {
+            isFacingLeft = false;
+        }
+    }
 }
