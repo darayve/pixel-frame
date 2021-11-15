@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class Chameleon : Enemy
 {
-    private Animator anim;
-    private void Start()
-    {
-        anim = GetComponent<Animator>();
-    }
-
     private void Update()
     {
         if (DetectPlayer(visionRange))
@@ -20,6 +14,7 @@ public class Chameleon : Enemy
         {
             state = EnemyState.idle;
         }
+
         anim.SetInteger("state", (int)state);
     }
 
