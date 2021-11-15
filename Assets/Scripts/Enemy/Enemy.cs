@@ -59,6 +59,21 @@ public abstract class Enemy : MonoBehaviour
         return val;
     }
 
+    public void ChasePlayer()
+    {
+        
+        if (transform.position.x < player.position.x + 1)
+        {
+            StartCoroutine(Flip(1, -1));
+            isFacingLeft = true;
+        } else
+        {
+            StartCoroutine(Flip(-1, 1));
+            isFacingLeft = false;
+        }
+    }
+
+
     private IEnumerator Flip(int movementDir, int scaleDir)
     {
         yield return new WaitForSeconds(.2f);
