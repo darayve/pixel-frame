@@ -19,6 +19,7 @@ public class ItemCollector : MonoBehaviour
             Destroy(collision.gameObject, collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
             collision.enabled = false;
             FruitsManager.FruitsCollected++;
+            FruitsManager.FruitCounterToHeart++;
             FruitsManager.Instance.UpdateFruitsCounter();
             SoundManager.Instance.PlaySound(collectSFX);
         }

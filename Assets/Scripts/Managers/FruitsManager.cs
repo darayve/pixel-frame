@@ -11,7 +11,7 @@ public class FruitsManager : MonoBehaviour
 
     // Private
     private static int _fruitsCollected = 0;
-    private int fruitsToEarnHeart = _fruitsCollected;
+    private static int _fruitsToEarnHeart = _fruitsCollected;
 
     // Public
     public static FruitsManager Instance;
@@ -19,6 +19,12 @@ public class FruitsManager : MonoBehaviour
     {
         get => _fruitsCollected;
         set => _fruitsCollected = value;
+    }
+
+    public static int FruitCounterToHeart
+    {
+        get => _fruitsToEarnHeart;
+        set => _fruitsToEarnHeart = value;
     }
 
     private void Awake()
@@ -36,21 +42,19 @@ public class FruitsManager : MonoBehaviour
         }
 
         _fruitsCollected = 0;
+        _fruitsToEarnHeart = 0;
 
         UpdateFruitsCounter();
     }
 
     public void UpdateFruitsCounter()
     {
-        if (fruitsToEarnHeart == _fruitsCollected)
-        {
-            fruitsToEarnHeart = 0;
-        }
-        if (_fruitsCollected == Constants.FRUITS_HEALTH)
+        if (_fruitsToEarnHeart == Constants.FRUITS_HEALTH)
         {
             LifeManager.NumberOfLives++;
             LifeManager.Instance.SetLivesCounterText();
             SoundManager.Instance.PlaySound(newLifeSFX);
+            _fruitsToEarnHeart = 0;
             print("Earned one more life!");
         }
         

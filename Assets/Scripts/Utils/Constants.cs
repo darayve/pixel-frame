@@ -18,5 +18,5 @@ public class Constants
 
     // Magic numbers
     public const int NUMBER_OF_LIVES = 3;
-    public const int FRUITS_HEALTH = 6; 
+    public const int FRUITS_HEALTH = 5; 
 }
