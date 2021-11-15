@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    private Rigidbody2D rb;
     [SerializeField] private Transform castPosition;
     [SerializeField] private float moveSpeed = 3;
     [SerializeField] private float baseCastDistance;
+    [SerializeField] private string facingDirection;
+
+    private Rigidbody2D rb;
+    private Vector3 baseScale;
+
     const string LEFT = "left";
     const string RIGHT = "right";
-    [SerializeField] private string facingDirection;
-    private Vector3 baseScale;
 
     private void Start()
     {
