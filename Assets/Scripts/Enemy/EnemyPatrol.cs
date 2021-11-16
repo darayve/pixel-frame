@@ -56,6 +56,11 @@ public class EnemyPatrol : MonoBehaviour
         {
             ChangeWalkingDirection();
         }
+
+        if (collision.gameObject.CompareTag(Constants.DECORATION_TAG))
+        {
+            ChangeWalkingDirection();
+        }
     }
 
     private void ChangeDirection(string newDir)
