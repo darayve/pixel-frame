@@ -15,6 +15,7 @@ public class Constants
     public const string GROUND_TAG = "Ground";
     public const string COLLECTABLE_TAG = "Collectable";
     public const string TRAP_TAG = "Trap";
+    public const string DECORATION_TAG = "Decoration";
 
     // Layers
     public const string ACTION_LAYER = "Action";
