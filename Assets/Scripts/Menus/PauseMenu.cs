@@ -16,7 +16,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (isGamePaused && !SettingsMenu.IsSettingsMenuActive)
+            if (isGamePaused && pauseMenu.activeSelf && !SettingsMenu.IsSettingsMenuActive)
             {
                 Resume();
             } 

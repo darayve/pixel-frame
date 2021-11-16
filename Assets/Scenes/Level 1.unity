@@ -13379,7 +13379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1541676787010912657, guid: fcd0e39b324a6c845b44e4be9b4a2f4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.012785
+      value: -16.013435
       objectReference: {fileID: 0}
     - target: {fileID: 1541676787010912657, guid: fcd0e39b324a6c845b44e4be9b4a2f4e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -133946,7 +133946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8071511003566539446, guid: 5bdf9717792b1744c989d041df3b5a1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.773211
+      value: -9.778639
       objectReference: {fileID: 0}
     - target: {fileID: 8071511003566539446, guid: 5bdf9717792b1744c989d041df3b5a1b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -134393,6 +134393,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 391271801609455125, guid: 85f73b91d96edc54d97a4bb050705955, type: 3}
   m_PrefabInstance: {fileID: 1966187468}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1887673844 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 206398800964837149, guid: 079780ca626c0b34299ac77e39757623, type: 3}
+  m_PrefabInstance: {fileID: 1645119687245097897}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1952330070
 GameObject:
   m_ObjectHideFlags: 0
@@ -134747,6 +134752,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 206398802160058221, guid: 079780ca626c0b34299ac77e39757623, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 206398802160058221, guid: 079780ca626c0b34299ac77e39757623, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1887673844}
+    - target: {fileID: 206398802160058221, guid: 079780ca626c0b34299ac77e39757623, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 206398802160058221, guid: 079780ca626c0b34299ac77e39757623, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1645119687437682507, guid: 079780ca626c0b34299ac77e39757623, type: 3}
       propertyPath: m_Name
       value: Canvas
