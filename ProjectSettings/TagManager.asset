@@ -8,6 +8,7 @@ TagManager:
   - Collectable
   - Trap
   - Enemy
+  - Decoration
   layers:
   - Default
   - TransparentFX
