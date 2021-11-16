@@ -12700,7 +12700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1541676787010912657, guid: fcd0e39b324a6c845b44e4be9b4a2f4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.6736584
+      value: -6.6732836
       objectReference: {fileID: 0}
     - target: {fileID: 1541676787010912657, guid: fcd0e39b324a6c845b44e4be9b4a2f4e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17817,7 +17817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8071511003566539446, guid: 5bdf9717792b1744c989d041df3b5a1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.2804832
+      value: -4.27736
       objectReference: {fileID: 0}
     - target: {fileID: 8071511003566539446, guid: 5bdf9717792b1744c989d041df3b5a1b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18749,8 +18749,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1809653765
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -4256795320221200915, guid: 43f6bb244a62313438cda197a8e07007, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -24337,6 +24337,10 @@ PrefabInstance:
     - target: {fileID: 5183142761843618178, guid: e8dd239041d0a2540b2d00df2c9abcf6, type: 3}
       propertyPath: m_Name
       value: Chameleon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183142761843618186, guid: e8dd239041d0a2540b2d00df2c9abcf6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8dd239041d0a2540b2d00df2c9abcf6, type: 3}
