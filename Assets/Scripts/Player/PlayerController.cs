@@ -20,10 +20,10 @@ public class PlayerController : MonoBehaviour
     private bool doubleJumped;
     private bool wasOnGround;
     private static bool _isPlayerFalling;
-    private enum MovementState { idle, running, jumping, falling, doubleJumping, hit }
-    private MovementState state = MovementState.idle;
     private float gravityScale;
     private float fallGravityMultiplier = 1.5f;
+    private enum MovementState { idle, running, jumping, falling, doubleJumping, hit }
+    private MovementState state = MovementState.idle;
 
     public static bool IsPlayerFalling
     {
