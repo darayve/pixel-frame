@@ -11,7 +11,6 @@ public class SpawnClouds : MonoBehaviour
     private void Start()
     {
         start = transform.position;
-        //StartCoroutine(Spawn());
         PreSpawn();
         StartCoroutine(DoSpawn());
     }
@@ -21,27 +20,21 @@ public class SpawnClouds : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             Vector2 spawningPosition = start + Vector2.right * (i * 2);
-            Spawn(start);
+            Spawn(spawningPosition);
         }
     }
 
-    //private IEnumerator Spawn()
     private void Spawn(Vector2 startPosition)
     {
-        //yield return new WaitForSeconds(spawnInterval);
-
         int index = Random.Range(0, clouds.Length);
-        float randSpeed = Random.Range(0.5f, 1.5f);
+        float randSpeed = Random.Range(1f, 2f);
         float randScale = Random.Range(0.3f, 1.2f);
         float randStartY = Random.Range(start.y - 2f, start.y + 2f);
         GameObject cloud = Instantiate(clouds[index]);
         
-
         cloud.transform.localScale = new Vector2(randScale, randScale);
         cloud.transform.position = new Vector2(start.x, randStartY);
         Cloud.StartSpawning(randSpeed, end.transform.position.x);
-
-        //StartCoroutine(Spawn());
     }
 
     private IEnumerator DoSpawn()
