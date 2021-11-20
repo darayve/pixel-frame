@@ -5,13 +5,10 @@ using TMPro;
 
 public class LifeManager : MonoBehaviour
 {
-    // SerializeFields
     [SerializeField] private TextMeshProUGUI lifeText;
 
-    // Private
     private static int _numberOfLives = Constants.NUMBER_OF_LIVES;
 
-    // Public 
     public static LifeManager Instance;
     public static int NumberOfLives
     {

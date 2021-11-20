@@ -5,15 +5,12 @@ using TMPro;
 
 public class FruitsManager : MonoBehaviour
 {
-    // SerializeFields
     [SerializeField] private TextMeshProUGUI fruitsText;
     [SerializeField] private AudioClip newLifeSFX;
 
-    // Private
     private static int _fruitsCollected = 0;
     private static int _fruitsToEarnHeart = _fruitsCollected;
 
-    // Public
     public static FruitsManager Instance;
     public static int FruitsCollected
     {

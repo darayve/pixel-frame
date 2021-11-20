@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // SerializeFields
     [SerializeField] float jumpForce = 14f;
     [SerializeField] float moveSpeed = 7f;
     [SerializeField] float bounceBackForce = 10f;
@@ -13,7 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip jumpSFX;
     [SerializeField] ParticleSystem[] psDusts;
 
-    // Private
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer sprite;
@@ -27,14 +25,12 @@ public class PlayerController : MonoBehaviour
     private float gravityScale;
     private float fallGravityMultiplier = 1.5f;
 
-    // Public
     public static bool IsPlayerFalling
     {
         get => _isPlayerFalling;
         set => _isPlayerFalling = value;
     }
 
-    // Start is called before the first frame update
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -63,7 +59,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     private void Update()
     {
         if (IsGrounded())

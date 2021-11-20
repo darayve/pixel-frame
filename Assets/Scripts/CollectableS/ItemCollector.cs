@@ -3,10 +3,8 @@ using UnityEngine.UI;
 
 public class ItemCollector : MonoBehaviour
 {
-    // SerializeFields
     [SerializeField] private AudioClip collectSFX;
 
-    // Private
     private Animator fruitAnim;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,6 +32,5 @@ public class ItemCollector : MonoBehaviour
         LifeManager.NumberOfLives++;
         LifeManager.Instance.SetLivesCounterText();
         FruitsManager.Instance.PlayNewLifeSFX();
-        print("Watermelon collected! 1UP!");
     }
 }

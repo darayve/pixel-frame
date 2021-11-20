@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class MenuSceneManager : MonoBehaviour
 {
-    // Private
     private static bool _isNewGame;
 
-    // Public
     public static MenuSceneManager Instance;
     public static bool IsNewGame
     {

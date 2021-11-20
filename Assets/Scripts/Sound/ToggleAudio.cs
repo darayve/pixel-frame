@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ToggleAudio : MonoBehaviour
 {
-    // SerializeFields
     [SerializeField] private bool toggleMusic, toggleEffects;
 
     public void Toggle()

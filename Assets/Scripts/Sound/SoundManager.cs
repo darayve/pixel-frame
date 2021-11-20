@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    // SerializeFields
     [SerializeField] private AudioSource musicSource, effectsSource;
 
-    // Private
     private static float _sliderVolume;
 
-    // Public
     public static SoundManager Instance;
     public static float SliderVolume
     {

@@ -3,12 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
-    // SerializeFields
     [SerializeField] private AudioClip enemyHitSFX;
     [SerializeField] private AudioClip deathSFX;
     [SerializeField] private AudioClip hurtSFX;
 
-    // Private
     private Animator anim;
     private Rigidbody2D rb;
 

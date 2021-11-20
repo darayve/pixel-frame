@@ -3,10 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class Finish : MonoBehaviour
 {
-    // SerializeFields
     [SerializeField] private AudioClip finishSFX;
 
-    // Private
     private bool levelCompleted = false;
     private int nextLevel;
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyKilled : MonoBehaviour
 {
-    // Private
     private Collider2D coll;
 
     void Start()

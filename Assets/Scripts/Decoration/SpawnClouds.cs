@@ -7,6 +7,7 @@ public class SpawnClouds : MonoBehaviour
     [SerializeField] private GameObject[] clouds;
     [SerializeField] private float spawnInterval;
     [SerializeField] GameObject end;
+
     private Vector2 start;
     private void Start()
     {
