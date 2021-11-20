@@ -63,6 +63,19 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag(Constants.WATER_TAG))
+        {
+            if (LifeManager.NumberOfLives > 0)
+            {
+                LifeManager.NumberOfLives = 0;
+                LifeManager.Instance.SetLivesCounterText();
+                Die();
+            }
+        }
+    }
+
     private void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
