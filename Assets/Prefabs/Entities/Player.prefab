@@ -129,10 +129,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 4.86
+  m_GravityScale: 3.7
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -150,10 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd68228dc5d0cf84db5e29afbc359f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 17
+  jumpForce: 14
   moveSpeed: 7
-  bounceBackForce: 15
-  hurtForce: 15
+  bounceBackForce: 10
+  hurtForce: 10
+  fallGravityMultiplier: 1.6
+  jumpedOnEnemyForce: 10
   jumpableGround:
     serializedVersion: 2
     m_Bits: 64

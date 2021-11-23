@@ -11586,7 +11586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1541676787010912657, guid: fcd0e39b324a6c845b44e4be9b4a2f4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.25232
+      value: -10.253134
       objectReference: {fileID: 0}
     - target: {fileID: 1541676787010912657, guid: fcd0e39b324a6c845b44e4be9b4a2f4e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21473,7 +21473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8071511003566539446, guid: 5bdf9717792b1744c989d041df3b5a1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.769332
+      value: -7.7761097
       objectReference: {fileID: 0}
     - target: {fileID: 8071511003566539446, guid: 5bdf9717792b1744c989d041df3b5a1b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22256,6 +22256,22 @@ PrefabInstance:
     - target: {fileID: 2035411547441008644, guid: 868df611eab582d4588ba303b6bd7be4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2035411547441008645, guid: 868df611eab582d4588ba303b6bd7be4, type: 3}
+      propertyPath: hurtForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2035411547441008645, guid: 868df611eab582d4588ba303b6bd7be4, type: 3}
+      propertyPath: jumpForce
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2035411547441008645, guid: 868df611eab582d4588ba303b6bd7be4, type: 3}
+      propertyPath: bounceBackForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2035411547441008645, guid: 868df611eab582d4588ba303b6bd7be4, type: 3}
+      propertyPath: fallGravityMultiplier
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 868df611eab582d4588ba303b6bd7be4, type: 3}

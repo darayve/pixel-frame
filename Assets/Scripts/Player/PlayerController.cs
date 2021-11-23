@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float jumpForce = 14f;
-    [SerializeField] float moveSpeed = 7f;
-    [SerializeField] float bounceBackForce = 10f;
-    [SerializeField] float hurtForce = 10f;
+    [SerializeField] private float jumpForce = 14f;
+    [SerializeField] private float moveSpeed = 7f;
+    [SerializeField] private float bounceBackForce = 10f;
+    [SerializeField] private float hurtForce = 10f;
+    [SerializeField] private float fallGravityMultiplier = 1.5f;
+    [SerializeField] private float jumpedOnEnemyForce = 10f;
     [SerializeField] LayerMask jumpableGround;
     [SerializeField] AudioClip jumpSFX;
     [SerializeField] ParticleSystem[] psDusts;
@@ -21,7 +23,6 @@ public class PlayerController : MonoBehaviour
     private bool wasOnGround;
     private static bool _isPlayerFalling;
     private float gravityScale;
-    private float fallGravityMultiplier = 1.5f;
     private enum MovementState { idle, running, jumping, falling, doubleJumping, hit }
     private MovementState state = MovementState.idle;
 
@@ -91,7 +92,7 @@ public class PlayerController : MonoBehaviour
                 _isPlayerFalling = true;
                 ScreenShake.Instance.ShakeCamera(5f, .2f);
                 collision.gameObject.GetComponent<Animator>().SetTrigger("eliminated");
-                rb.velocity = new Vector2(rb.velocity.x, 14f);
+                rb.velocity = new Vector2(rb.velocity.x, jumpedOnEnemyForce);
                 Destroy(collision.gameObject, collision.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length - .12f);
                 collision.gameObject.GetComponent<Collider2D>().enabled = false;
             } else
