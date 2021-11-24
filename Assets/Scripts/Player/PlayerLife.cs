@@ -81,7 +81,7 @@ public class PlayerLife : MonoBehaviour
         SoundManager.Instance.PlaySound(deathSFX);
     }
 
-    private void RestartLevel()
+    public void RestartLevel()
     {
         LifeManager.NumberOfLives = 3;
         LifeManager.Instance.SaveLives();

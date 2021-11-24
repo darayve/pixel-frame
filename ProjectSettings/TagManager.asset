@@ -56,3 +56,6 @@ TagManager:
   - name: First Plane
     uniqueID: 2485313531
     locked: 0
+  - name: Camera
+    uniqueID: 771380363
+    locked: 0

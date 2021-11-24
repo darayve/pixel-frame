@@ -764,6 +764,10 @@ PrefabInstance:
       propertyPath: pauseMenuBoard
       value: 
       objectReference: {fileID: 524665360}
+    - target: {fileID: 3548031954729733515, guid: 0bd8f7d113290cb4a90537b65e19464d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2035411547319335690}
     - target: {fileID: 7859853109314725722, guid: 0bd8f7d113290cb4a90537b65e19464d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 4
@@ -7439,7 +7443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1541676787010912657, guid: fcd0e39b324a6c845b44e4be9b4a2f4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5413702
+      value: -2.543282
       objectReference: {fileID: 0}
     - target: {fileID: 1541676787010912657, guid: fcd0e39b324a6c845b44e4be9b4a2f4e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7565,6 +7569,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2035411547441008644, guid: 868df611eab582d4588ba303b6bd7be4, type: 3}
   m_PrefabInstance: {fileID: 2035411547319335688}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2035411547319335690 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2035411547441008664, guid: 868df611eab582d4588ba303b6bd7be4, type: 3}
+  m_PrefabInstance: {fileID: 2035411547319335688}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25250a8d489f67a42a972deba7cfb6ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2302203541023069079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7840,7 +7855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8071511003566539446, guid: 5bdf9717792b1744c989d041df3b5a1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5413702
+      value: -2.543282
       objectReference: {fileID: 0}
     - target: {fileID: 8071511003566539446, guid: 5bdf9717792b1744c989d041df3b5a1b, type: 3}
       propertyPath: m_LocalPosition.y
