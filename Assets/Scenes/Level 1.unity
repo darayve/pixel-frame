@@ -24205,14 +24205,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1660235312}
     - target: {fileID: 1645119687437682508, guid: 079780ca626c0b34299ac77e39757623, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1645119687437682508, guid: 079780ca626c0b34299ac77e39757623, type: 3}
-      propertyPath: m_PixelPerfect
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1645119687437682508, guid: 079780ca626c0b34299ac77e39757623, type: 3}
       propertyPath: m_SortingLayerID
       value: 771380363
       objectReference: {fileID: 0}
@@ -24482,6 +24474,10 @@ PrefabInstance:
     - target: {fileID: 2538148910467987736, guid: 96b0b44d6ddd00641b9bf806aeab4069, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855859199596726305, guid: 96b0b44d6ddd00641b9bf806aeab4069, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7172244528605283153, guid: 96b0b44d6ddd00641b9bf806aeab4069, type: 3}
       propertyPath: m_Name
