@@ -3,10 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
-    // SerializeFields
+    [SerializeField] private AudioClip enemyHitSFX;
     [SerializeField] private AudioClip deathSFX;
+    [SerializeField] private AudioClip hurtSFX;
 
-    // Private
     private Animator anim;
     private Rigidbody2D rb;
 
@@ -18,9 +18,59 @@ public class PlayerLife : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag(Constants.ENEMY_TAG))
+        {
+            if (PlayerController.IsPlayerFalling)
+            {
+                SoundManager.Instance.PlaySound(enemyHitSFX);
+            }
+            else
+            {
+                if (LifeManager.NumberOfLives > 0)
+                {
+                    LifeManager.NumberOfLives--;
+                    if (LifeManager.NumberOfLives == 0)
+                    {
+                        Die();
+                    }
+                    else
+                    {
+                        SoundManager.Instance.PlaySound(hurtSFX);
+                    }
+                }
+                
+                LifeManager.Instance.SetLivesCounterText();
+            }
+        }
+
         if (collision.gameObject.CompareTag(Constants.TRAP_TAG))
         {
-            Die();
+            if (LifeManager.NumberOfLives > 0)
+            {
+                LifeManager.NumberOfLives--;
+                if (LifeManager.NumberOfLives == 0)
+                {
+                    Die();
+                }
+                else
+                {
+                    SoundManager.Instance.PlaySound(hurtSFX);
+                }
+            }
+            LifeManager.Instance.SetLivesCounterText();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag(Constants.WATER_TAG))
+        {
+            if (LifeManager.NumberOfLives > 0)
+            {
+                LifeManager.NumberOfLives = 0;
+                LifeManager.Instance.SetLivesCounterText();
+                Die();
+            }
         }
     }
 
@@ -31,8 +81,12 @@ public class PlayerLife : MonoBehaviour
         SoundManager.Instance.PlaySound(deathSFX);
     }
 
-    private void RestartLevel()
+    public void RestartLevel()
     {
+        LifeManager.NumberOfLives = 3;
+        LifeManager.Instance.SaveLives();
+        FruitsManager.FruitsCollected = 0;
+        FruitsManager.Instance.SaveFruits();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -1,15 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class ItemCollector : MonoBehaviour
 {
-    // SerializeFields
-    [SerializeField] private TextMeshProUGUI orangesText;
     [SerializeField] private AudioClip collectSFX;
 
-    // Private
-    private int oranges = 0;
     private Animator fruitAnim;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,9 +16,21 @@ public class ItemCollector : MonoBehaviour
             fruitAnim.SetTrigger("collected");
             Destroy(collision.gameObject, collision.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
             collision.enabled = false;
-            oranges++;
-            orangesText.text = "" + oranges;
+            FruitsManager.FruitsCollected++;
+            FruitsManager.FruitCounterToHeart++;
+            FruitsManager.Instance.UpdateFruitsCounter();
             SoundManager.Instance.PlaySound(collectSFX);
+            if (collision.gameObject.GetComponent<CollectableScript>().itemType == Constants.ITEM_HEALTH)
+            {
+                CollectFruitHealth();
+            }
         }
+    }
+
+    private void CollectFruitHealth()
+    {
+        LifeManager.NumberOfLives++;
+        LifeManager.Instance.SetLivesCounterText();
+        FruitsManager.Instance.PlayNewLifeSFX();
     }
 }

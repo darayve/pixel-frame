@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2035411547441008647}
   - component: {fileID: 2035411547441008646}
   - component: {fileID: 2035411547441008664}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -6367560908665664636, guid: d348dff3819df794186a80cb95777629, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -129,10 +129,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -152,6 +152,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 14
   moveSpeed: 7
+  bounceBackForce: 10
+  hurtForce: 10
+  fallGravityMultiplier: 1.6
+  jumpedOnEnemyForce: 10
   jumpableGround:
     serializedVersion: 2
     m_Bits: 64
@@ -172,7 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2331da9c1eb7f26409bcc2cfa0501582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orangesText: {fileID: 0}
   collectSFX: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
 --- !u!95 &2035411547441008646
 Animator:
@@ -205,7 +208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25250a8d489f67a42a972deba7cfb6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHitSFX: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   deathSFX: {fileID: 8300000, guid: 4b4dd7245f6104c8c8eb07ccf6b386ed, type: 3}
+  hurtSFX: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
 --- !u!1 &5179845224105197052
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +222,7 @@ GameObject:
   - component: {fileID: 7331202201559724946}
   - component: {fileID: 844527744615921108}
   - component: {fileID: 6066944715902348516}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_Jumping
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +379,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -806,7 +811,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 10
+    maxNumParticles: 6
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -865,9 +870,9 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 8
     angle: 25
-    length: 5
+    length: 3
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
@@ -1071,7 +1076,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 7
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1747,7 +1752,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.12
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5021,7 +5026,7 @@ GameObject:
   - component: {fileID: 8915004355051183894}
   - component: {fileID: 2621594438452017252}
   - component: {fileID: 4160161505483861655}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_Running
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9825,7 +9830,7 @@ GameObject:
   - component: {fileID: 5570357956584955159}
   - component: {fileID: 767906835668122199}
   - component: {fileID: 8277746728187486564}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_Falling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9982,7 +9987,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10414,7 +10419,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 8
+    maxNumParticles: 5
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -10679,7 +10684,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 10
       minScalar: 10
       maxCurve:
         serializedVersion: 2

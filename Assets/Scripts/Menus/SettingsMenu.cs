@@ -6,19 +6,16 @@ using TMPro;
 
 public class SettingsMenu : MonoBehaviour
 {
-    // SerializeFields
     [SerializeField] private TextMeshProUGUI resolutionText;
     [SerializeField] private GameObject otherMenu;
     [SerializeField] private Toggle musicToggle, effectsToggle;
 
-    // Private
     private static bool _isSettingsMenuActive = false;
 
     private Resolution[] _resolutions;
     private int currentResolutionIndex = 0;
     private List<string> resOptions = new List<string>();
 
-    // Public
     public static bool IsSettingsMenuActive => _isSettingsMenuActive;
 
     private void Awake()

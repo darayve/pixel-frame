@@ -11,8 +11,8 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
+        MenuSceneManager.IsNewGame = true;
         Utils.SaveLevel(level: 1);
-        
         SceneManager.LoadScene(Utils.GetNextScene());
     }
 
@@ -20,10 +20,11 @@ public class MainMenu : MonoBehaviour
     {
         if (PlayerPrefs.HasKey(Constants.LEVEL))
         {
+            MenuSceneManager.IsNewGame = false;
             SceneManager.LoadScene(PlayerPrefs.GetInt(Constants.LEVEL));
         } else
         {
-            Debug.Log("Não foi encontrado um save! Iniciando novo jogo.");
+            Debug.Log("Não foi encontrado um jogo salvo! Iniciando novo jogo.");
             NewGame();
         }
     }

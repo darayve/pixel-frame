@@ -5,10 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    // SerializeFields
     [SerializeField] private GameObject pauseMenu;
 
-    // Private
     private int mainMenuSceneIndex = 0;
     private bool isGamePaused = false;
 
@@ -16,7 +14,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (isGamePaused && !SettingsMenu.IsSettingsMenuActive)
+            if (isGamePaused && pauseMenu.activeSelf && !SettingsMenu.IsSettingsMenuActive)
             {
                 Resume();
             } 
@@ -43,6 +41,8 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveGame()
     {
+        LifeManager.Instance.SaveLives();
+        FruitsManager.Instance.SaveFruits();
         Utils.SaveCurrentLevel();
     }
 

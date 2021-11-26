@@ -3,10 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class Finish : MonoBehaviour
 {
-    // SerializeFields
     [SerializeField] private AudioClip finishSFX;
 
-    // Private
     private bool levelCompleted = false;
     private int nextLevel;
 
@@ -21,14 +19,15 @@ public class Finish : MonoBehaviour
         {
             SoundManager.Instance.PlaySound(finishSFX);
             levelCompleted = true;
+            LifeManager.Instance.SaveLives();
+            FruitsManager.Instance.SaveFruits();
             Invoke("CompleteLevel", 1.5f);
         }
     }
 
     private void CompleteLevel()
     {
-        PlayerPrefs.SetInt(Constants.LEVEL, nextLevel);
-        PlayerPrefs.Save();
+        Utils.SaveLevel(nextLevel);
         SceneManager.LoadScene(nextLevel);
     }
 }
