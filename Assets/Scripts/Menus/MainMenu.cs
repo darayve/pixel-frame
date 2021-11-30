@@ -5,8 +5,9 @@ public class MainMenu : MonoBehaviour
 {
     private void Start()
     {
-        LoadVolume();
-        LoadToggleAudioOptions();
+        //LoadVolume();
+        //LoadToggleAudioOptions();
+        //PlayerPrefs.DeleteAll();
     }
 
     public void NewGame()

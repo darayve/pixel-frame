@@ -24304,6 +24304,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 763794401}
+    - target: {fileID: 8802997643654687282, guid: 079780ca626c0b34299ac77e39757623, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 079780ca626c0b34299ac77e39757623, type: 3}
 --- !u!1001 &2035411547319335688

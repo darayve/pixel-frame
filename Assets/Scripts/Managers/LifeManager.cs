@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class LifeManager : MonoBehaviour
@@ -30,7 +31,7 @@ public class LifeManager : MonoBehaviour
             Destroy(gameObject);
         }
         
-        if (MenuSceneManager.IsNewGame)
+        if (MenuSceneManager.IsNewGame && SceneManager.GetActiveScene().buildIndex == 1)
         {
             _numberOfLives = Constants.NUMBER_OF_LIVES;
         } else
